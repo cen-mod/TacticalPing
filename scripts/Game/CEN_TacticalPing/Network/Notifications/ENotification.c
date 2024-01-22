@@ -1,0 +1,6 @@
+modded enum ENotification
+{
+	CEN_TACTICAL_PING,
+	CEN_TACTICAL_PING_TARGET_ENTITY
+};
+

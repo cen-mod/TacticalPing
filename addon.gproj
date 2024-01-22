@@ -1,0 +1,20 @@
+GameProject {
+ ID "CEN_TacticalPing"
+ GUID "606C369BAC3F6CC3"
+ TITLE "CEN Tactical Ping"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
+}

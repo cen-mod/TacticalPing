@@ -1,0 +1,4 @@
+*.rdb
+*.json
+meta
+preview*.jpg
