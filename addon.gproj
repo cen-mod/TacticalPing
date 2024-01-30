@@ -1,7 +1,7 @@
 GameProject {
  ID "CEN_TacticalPing"
  GUID "606C369BAC3F6CC3"
- TITLE "CEN Tactical Ping"
+ TITLE "CEN - Tactical Ping"
  Dependencies {
   "58D0FB3206B6F859"
  }
