@@ -10,17 +10,29 @@ class CEN_TacticalPingEditorComponent : SCR_BaseEditorComponent
 	[Attribute(defvalue: "10", desc: "Range of the ping in meters. Only players in range will see it.")]
 	protected float m_fPingRange;
 	
-	[Attribute(defvalue: "10", desc: "Lifetime of ping in seconds")]
+	[Attribute(defvalue: "6", desc: "Lifetime of ping in seconds")]
 	protected float m_fPingLifetime;
+	
+	[Attribute(defvalue: "1.5", desc: "Cooldown in seconds until next ping can be sent")]
+	protected float m_fPingCooldown;
 	
 	[Attribute(desc: "Effects of the ping")]
 	protected ref array<ref SCR_BaseEditorEffect> m_EffectsTacticalPing;
 	
 	protected ref ScriptInvoker Event_OnPingEntityRegister = new ScriptInvoker;
 	protected ref ScriptInvoker Event_OnPingEntityUnregister = new ScriptInvoker;
+	protected float m_fLastPingTime = 0;
 	
 	void SendPing(vector targetPos, SCR_EditableEntityComponent target = null)
 	{
+		float currentCooldown = m_fPingCooldown - (GetGame().GetWorld().GetWorldTime() - m_fLastPingTime) / 1000;
+		if (m_fLastPingTime > 0 && currentCooldown > 0)
+		{
+			SCR_NotificationsComponent.SendLocal(ENotification.ACTION_ON_COOLDOWN, currentCooldown * 100);
+			return;
+		};
+		m_fLastPingTime = GetGame().GetWorld().GetWorldTime();
+		
 		IEntity player = GetGame().GetPlayerController().GetControlledEntity();
 		if (!player)
 			return;
