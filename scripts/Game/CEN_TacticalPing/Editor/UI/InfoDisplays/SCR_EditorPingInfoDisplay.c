@@ -24,11 +24,12 @@ modded class SCR_EditorPingInfoDisplay : SCR_InfoDisplay
 		vector startPos = workspace.ProjScreenToWorld(workspace.DPIUnscale(screenW / 2), workspace.DPIUnscale(screenH / 2), outDir, world);
 		outDir *= m_pCEN_TacticalPingManager.GetMaxPointingDistance();
 	
-		autoptr TraceParam trace = new TraceParam();
+		TraceParam trace = new TraceParam();
 		trace.Start = startPos;
 		trace.End = startPos + outDir;
 		trace.Flags = TraceFlags.WORLD | TraceFlags.OCEAN | TraceFlags.ENTS;
 		trace.LayerMask = TRACE_LAYER_CAMERA;
+		trace.Exclude = SCR_PlayerController.GetLocalMainEntity();
 		float traceDis = world.TraceMove(trace, null);
 		SCR_EditableEntityComponent	target = SCR_EditableEntityComponent.GetEditableEntity(trace.TraceEnt);
 			
