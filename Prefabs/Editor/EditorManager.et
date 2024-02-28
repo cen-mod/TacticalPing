@@ -4,7 +4,7 @@ SCR_EditorManagerEntity {
   CEN_TacticalPingEditorComponent "{606C3698D6820F4F}" {
    m_EffectsTacticalPing {
     SCR_SoundEditorEffect "{606C3698D589CF12}" {
-     m_sSound "SOUND_CHECK_INJURIES_POPUP"
+     m_sSound "SOUND_CEN_TACTICAL_PING"
     }
     SCR_EntityEditorEffect "{606C3698D38305BE}" {
      m_Prefab "{744FFD0C5F124A92}PrefabsEditable/System/CEN_TacticalPingEntity.et"
